@@ -92,3 +92,10 @@ ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
 *.so.meta
 
 Assets/TextMesh Pro/
+
+### Ignore third-party networking packages managed by Unity Package Manager or by the user
+# We keep `Packages/manifest.json` tracked so Unity can prompt to install these.
+# Ignore Mirror and related transports installed inside Assets
+Assets/Mirror/
+# Ignore Steamworks.NET (local copy installed under Assets)
+Assets/com.rlabrecque.steamworks.net/
