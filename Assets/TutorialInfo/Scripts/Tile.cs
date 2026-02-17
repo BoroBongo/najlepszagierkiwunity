@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
-public class Tile : MonoBehaviour
+public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public TicTacToeManager ticTacToeManager;
-
+    Vector3 originalScale;
     public enum state
     {
         Circle,
@@ -28,6 +29,8 @@ public class Tile : MonoBehaviour
     void Start()
     {
         textState = GetComponentInChildren<TMP_Text>();
+        originalScale = transform.localScale;
+        textState.raycastTarget = false;
     }
 
 
@@ -56,6 +59,17 @@ public class Tile : MonoBehaviour
                 return;
         }
     }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        transform.localScale = originalScale * 1.1f;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        transform.localScale = originalScale;
+    }
+
 
     // Update is called once per frame
     void Update()
